@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Form isDirty</title>
+    <style>
+        body{width:600px;margin:60px auto;}
+        label{display:block;}
+        form.dirty{background:#ffc;}
+    </style>
+</head>
+<body>
+    <form id="myform" action="#">
+        <fieldset>
+            <legend>Text Input</legend>
+            <label>Input <input type="text" name="text-example" value="foo"></label>
+            <label>Textarea <textarea name="textarea-example">bar</textarea></label>
+        </fieldset>
+        <fieldset>
+            <legend>File</legend>
+            <input type="file" name="file-example">
+        </fieldset>
+        <fieldset>
+            <legend>Radio Buttons</legend>
+            <label><input type="radio" name="radio-example" value="1"> One</label>
+            <label><input type="radio" name="radio-example" value="2"> Two</label>
+            <label><input type="radio" name="radio-example" value="3"> Three</label>
+        </fieldset>
+        <fieldset>
+            <legend>Check Boxes</legend>
+            <label><input type="checkbox" name="checkbox-example" value="1"> One</label>
+            <label><input type="checkbox" name="checkbox-example" value="2"> Two</label>
+            <label><input type="checkbox" name="checkbox-example" value="3"> Three</label>
+        </fieldset>
+        <fieldset>
+            <legend>Select</legend>
+            <label>Single
+                <select name="select-example">
+                    <option>One</option>
+                    <option>Two</option>
+                    <option>Three</option>
+                </select>
+            </label>
+            <label>Multiple
+                <select name="select-multiple-example" multiple>
+                    <option>One</option>
+                    <option>Two</option>
+                    <option>Three</option>
+                </select>
+            </label>
+        </fieldset>
+    </form>
+
+    <script src="http://yui.yahooapis.com/3.2.0pr1/build/yui/yui-min.js"></script>
+    <script src="event-form-dirty.js"></script>
+    <script>
+        YUI().use('event-form-dirty', function(Y) {
+            Y.one('#myform').on('dirty', function(evt) {
+                evt.target.addClass('dirty');
+                alert(evt.target.get('id') + ' is dirty because ' + evt.relatedTarget.get('name') + ' was changed');
+            });
+        });
+    </script>
+</body>
+</html>
