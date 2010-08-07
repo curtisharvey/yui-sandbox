@@ -1,0 +1,6 @@
+An event that fires *after* paste.
+
+- Use the 'prevVal' and 'newVal' properties on the event object to compare
+  state before and after paste operation
+- Works in Opera! Opera doesn't support the 'paste' event, making things
+  difficult. It's messy, but it seems to be working.
